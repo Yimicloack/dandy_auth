@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dandy Authentication</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#000000">
+
+    <!-- Model Viewer -->
+    <script type="module"
+        src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+    </script>
+
+</head>
+
+<body>
+
+    <!-- VIDEO DE FONDO -->
+
+    <video id="backgroundVideo"
+           autoplay
+           muted
+           loop
+           playsinline>
+
+        <source src="assets/background.mp4"
+                type="video/mp4">
+
+    </video>
+
+    <!-- AUDIO -->
+
+    <audio id="bgMusic" loop>
+
+        <source src="assets/music.mp3"
+                type="audio/mpeg">
+
+    </audio>
+
+    <!-- OVERLAY -->
+
+    <div class="overlay"></div>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <button class="back-btn"
+                onclick="history.back()">
+
+            <span class="arrow">←</span>
+
+        </button>
+
+        <div class="logo-container">
+
+            <model-viewer
+                src="assets/dh-logo.glb"
+                auto-rotate
+                auto-rotate-delay="0"
+                rotation-per-second="35deg"
+                disable-zoom
+                camera-controls="false"
+                interaction-prompt="none"
+                style="pointer-events:none;">
+
+            </model-viewer>
+
+        </div>
+
+    </header>
+
+    <!-- CONTENIDO -->
+
+    <main>
+
+        <section class="auth-card">
+
+            <h1>
+                Producto auténtico
+                <br>
+                de dandi
+            </h1>
+
+            <img
+                src="assets/auth-logo.png"
+                alt="Authenticity"
+                class="auth-logo">
+
+            <div class="scan-count">
+
+                Escaneos:
+
+                <span id="scanCount">
+
+                    0
+
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

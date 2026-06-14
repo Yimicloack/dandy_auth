@@ -1,0 +1,188 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#backgroundVideo{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.10);
+    z-index:-1;
+}
+
+header{
+    position:absolute;
+    top:14px;
+    left:0;
+    width:100%;
+    padding:0 16px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    z-index:10;
+}
+
+/* BOTÓN REGRESAR */
+
+.back-btn{
+    width:50px;
+    height:50px;
+
+    border-radius:18px;
+
+    border:1.5px solid rgba(255,255,255,.55);
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(6px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+    cursor:pointer;
+}
+
+.arrow{
+    font-size:20px;
+    font-weight:300;
+    color:white;
+}
+
+/* LOGO DH */
+
+.logo-container{
+    width:58px;
+    height:58px;
+}
+
+.logo-container model-viewer{
+    width:100%;
+    height:100%;
+    background:transparent;
+    pointer-events:none;
+}
+
+/* TARJETA */
+
+main{
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    bottom:90px;
+
+    display:flex;
+    justify-content:center;
+
+    z-index:10;
+}
+
+.auth-card{
+
+    width:82%;
+    max-width:340px;
+
+    background:rgba(255,255,255,.16);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:24px;
+
+    padding:20px;
+
+    text-align:center;
+}
+
+.auth-card h1{
+
+    color:white;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    line-height:1.3;
+
+    margin-bottom:14px;
+}
+
+.auth-logo{
+
+    width:72px;
+
+    display:block;
+
+    margin:0 auto 14px auto;
+}
+
+.scan-count{
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+}
+
+#scanCount{
+    font-weight:700;
+}
+
+/* CELULARES */
+
+@media(max-width:480px){
+
+    main{
+        bottom:95px;
+    }
+
+    .auth-card{
+
+        width:84%;
+        max-width:320px;
+
+        padding:18px;
+    }
+
+    .auth-card h1{
+
+        font-size:13px;
+
+        margin-bottom:12px;
+    }
+
+    .auth-logo{
+
+        width:65px;
+
+        margin-bottom:12px;
+    }
+
+    .scan-count{
+
+        font-size:14px;
+    }
+}
