@@ -1,0 +1,15 @@
+{
+  "DH-0001": {
+    "nombre": "1004 KM",
+    "video": "assets/background.mp4",
+    "audio": "assets/music.mp3",
+    "escaneos": 1
+  },
+
+  "DH-0002": {
+    "nombre": "Tokyo Dreams",
+    "video": "assets/tokyo-dreams.mp4",
+    "audio": "assets/music.mp3",
+    "escaneos": 1
+  }
+}
