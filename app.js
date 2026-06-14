@@ -1,97 +1,72 @@
-/* =========================
-   CONTADOR DE ESCANEOS
-========================= */
-
-let scans = localStorage.getItem("scanCount");
-
-if (!scans) {
-    scans = 0;
-}
-
-scans++;
-
-localStorage.setItem(
-    "scanCount",
-    scans
-);
-
-document.getElementById(
-    "scanCount"
-).textContent = scans;
-
-
-/* =========================
-   AUDIO
-========================= */
-
-window.addEventListener("load", () => {
-
-    const audio =
-        document.getElementById(
-            "bgMusic"
-        );
-
-    if (audio) {
-
-        audio.volume = 1;
-
-        audio.play()
-
-            .then(() => {
-
-                console.log(
-                    "Audio iniciado"
-                );
-
-            })
-
-            .catch(error => {
-
-                console.log(
-                    "Autoplay bloqueado:",
-                    error
-                );
-
-            });
-
-    }
-
-});
-
-
-/* =========================
-   PWA
-========================= */
+// REGISTRAR SERVICE WORKER
 
 if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js");
+}
 
-    window.addEventListener(
-        "load",
-        () => {
+// CARGAR DATOS DE LA GORRA
 
-            navigator.serviceWorker
+async function cargarGorra() {
 
-                .register("./sw.js")
+    try {
 
-                .then(() => {
+        const params = new URLSearchParams(window.location.search);
 
-                    console.log(
-                        "PWA lista"
-                    );
+        const id = params.get("id");
 
-                })
+        if (!id) return;
 
-                .catch(error => {
+        const response = await fetch("caps.json");
 
-                    console.log(
-                        "Error SW:",
-                        error
-                    );
+        const caps = await response.json();
 
-                });
+        const gorra = caps[id];
 
+        if (!gorra) {
+
+            console.log("Gorra no encontrada");
+
+            return;
         }
 
-    );
+        // VIDEO
 
+        const video = document.getElementById("backgroundVideo");
+
+        video.src = gorra.video;
+
+        video.load();
+
+        video.play().catch(() => {});
+
+        // AUDIO
+
+        const audio = document.getElementById("bgMusic");
+
+        if (audio && gorra.audio) {
+
+            audio.src = gorra.audio;
+
+            audio.load();
+
+            audio.play().catch(() => {});
+        }
+
+        // CONTADOR
+
+        const scanCount = document.getElementById("scanCount");
+
+        if (scanCount) {
+
+            scanCount.textContent = gorra.escaneos;
+        }
+
+        console.log("Gorra cargada:", gorra.nombre);
+
+    } catch (error) {
+
+        console.error("Error cargando caps.json:", error);
+    }
 }
+
+cargarGorra();
